@@ -1,0 +1,17 @@
+<section id="main">
+    <h1>{{app.welcome}}</h1>
+
+    <button ng-click="app.getRandomPet()">Feeling Lucky?</button>
+    <div class="random-pet" ng-if="app.randomPet">
+        <h4>{{app.randomPet.name}}</h4>
+        <ul>
+            <li>Animal: {{app.randomPet.animal}}</li>
+            <li>Breed: {{app.randomPet.breed}}</li>
+        </ul>
+        <div class="thumbnail">
+            <img ng-src="{{app.randomPet.media[2]}}" alt="{{app.randomPet.name}}" >
+        </div>
+    </div>
+
+    <a ui-sref="find">Find A Pet</a>
+</section>

@@ -1,0 +1,21 @@
+<section id="about">
+    <h1>{{app.welcome}}</h1>
+
+    <input type="text" ng-model="app.location">
+    <button ng-click="app.findPet()">Find A Pet Near You</button>
+    <section class="flex-container">
+        <div class="loader" ng-if="app.loading"></div>
+        <div class="found-pet" ng-if="app.foundPets" ng-repeat="pet in app.foundPets">
+            <div class="thumbnail">
+                <img ng-src="{{pet.media[0]}}" alt="{{pet.name}}" >
+            </div>
+            <h4>{{pet.name}}</h4>
+            <ul>
+                <li>Animal: {{pet.animal}}</li>
+                <li>Breed: {{pet.breed}}</li>
+            </ul>
+        </div>
+    </section>
+
+    <a ui-sref="main">Home Page</a>
+</section>
