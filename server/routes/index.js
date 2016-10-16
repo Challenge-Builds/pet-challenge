@@ -4,22 +4,22 @@ const servicePath = process.env.SERVICE_PATH;
 
 exports.routes = [];
 
-// exports.routes.push({
-//     path: `${servicePath}/auth`,
-//     method: 'GET',
-//     config: {
-//         description: 'Authenticate to Petfinder API',
-//         tags: ['authentication'],
-//         pre: [
-//             {
-//                 method: 'petfinder.getAuth()'
-//             }
-//         ]
-//     },
-//     handler: function (request, reply) {
-//         reply('Hello')
-//     }
-// });
+exports.routes.push({
+    path: servicePath + '/auth',
+    method: 'GET',
+    config: {
+        description: 'Authenticate to Petfinder API',
+        tags: ['authentication'],
+        pre: [
+            {
+                method: 'petfinder.getAuth()'
+            }
+        ]
+    },
+    handler: function (request, reply) {
+        reply('Hello')
+    }
+});
 
 exports.routes.push({
     path: servicePath + '/pets/{id}',

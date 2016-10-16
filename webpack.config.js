@@ -34,7 +34,7 @@ module.exports = {
 			{ // Useful if your application is processing numerous Angular templates, `npm install ngtemplate-loader --save-dev`
 				test: /\.html$/,
 				loader: 'ngtemplate!html'
-			},
+			}
 			// { Useful if your application is processing numerous font or asset files, `npm install file-loader --save-dev`
 			// 	test: /\.(gif|png|jpe?g|ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
 			// 	loader: 'file-loader'

@@ -2,36 +2,22 @@
 const Utils = require('./utils');
 const Promise = require('bluebird');
 const http = require('request-promise');
+const md5 = require('md5');
 
 // Authenticate 
-// function getAuth() {
-//     const sig = md5(`${secret}key=${key}`);
-//     const options = {
-//         uri: `${APIBaseUrl}auth.getToken`,
-//         qs: {
-//             key: key,
-//             format: format,
-//             sig: sig
-//         },
-//         headers: {
-//             'User-Agent': 'Request-Promise',
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json'
-//         }
-//     }
-//     return http(options).then(res => {
-//         console.log(res.body)
-//         console.log('BODY')
-//         return;
-//     }).catch(err => {
-//         console.log(err)
-//         return err;
-//     })
-// }
+function getAuth() {
+    const queryOptions = Utils.buildAuthOptions();
+    return http(queryOptions).then(res => {
+        // auth.getToken appears to be returning a 404
+        return res;
+    }).catch(err => {
+        return err;
+    })
+}
 
 // Get Pet
 function getPet(id) {
-    var queryOptions = Utils.buildQueryOptions('pet.get', {id: id});
+    const queryOptions = Utils.buildQueryOptions('pet.get', {id: id});
 
     return http(queryOptions).then(pet => {
         return Utils.cleanUpData(pet.petfinder.pet);
@@ -45,7 +31,7 @@ function getRandomPet(options) {
     var randomOptions = options ? options : {};
     randomOptions.output = 'full';
 
-    var queryOptions = Utils.buildQueryOptions('pet.getRandom', randomOptions);
+    const queryOptions = Utils.buildQueryOptions('pet.getRandom', randomOptions);
 
     return http(queryOptions).then(random => {
         return Utils.cleanUpData(random.petfinder.pet);
@@ -59,18 +45,20 @@ function findPet(options) {
     var findOptions = options ? options : {};
     findOptions.output = 'full';
     findOptions.count = 12;
-    var queryOptions = Utils.buildQueryOptions('pet.find', findOptions);
+
+    const queryOptions = Utils.buildQueryOptions('pet.find', findOptions);
 
     return http(queryOptions).then(found => {
         return found.petfinder.pets.pet.map(pet => Utils.cleanUpData(pet));
     }).catch(err => {
+        console.log(err)
         return err;
     })
 }
 
 // List Breeds
 function listBreeds(animal) {
-    var queryOptions = Utils.buildQueryOptions('breed.list', {animal: animal});
+    const queryOptions = Utils.buildQueryOptions('breed.list', {animal: animal.toLowerCase()});
 
     return http(queryOptions).then(list => {
         return list.petfinder.breeds.breed.map(breed => breed['$t']);
@@ -81,7 +69,7 @@ function listBreeds(animal) {
 
 exports.methods = [];
 
-// exports.methods.push(Utils.createNamespaceMethod(getAuth));
+exports.methods.push(Utils.createNamespaceMethod(getAuth));
 exports.methods.push(Utils.createNamespaceMethod(getPet));
 exports.methods.push(Utils.createNamespaceMethod(getRandomPet));
 exports.methods.push(Utils.createNamespaceMethod(findPet));

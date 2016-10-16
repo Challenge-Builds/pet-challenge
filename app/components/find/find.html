@@ -1,12 +1,29 @@
-<section id="about">
-    <h1>{{app.welcome}}</h1>
-
-    <input type="text" ng-model="app.location">
-    <button ng-click="app.findPet()">Find A Pet Near You</button>
+<section id="find">
+    <header>
+        <h1>{{app.welcome}}</h1>
+    </header>
+    <div class="flex-container column centered">
+        <div class="flex-container row">
+            <div class="flex-container column centered">
+                <label>Find Pets Near You</label>
+                <input type="text" ng-model="app.location" placeholder="zip code">
+            </div>
+            <div class="flex-container column centered">
+                <label>Type:</label>
+                <input type="text" ng-model="app.animal" placeholder="Dog, Cat">
+            </div>
+            <div class="flex-container column centered">
+                <label>Breed</label>
+                <input type="text" ng-model="app.breed" placeholder="Chihuahua">
+            </div>
+        </div>
+        <button ng-click="app.findPet()" class="green" ng-if="!app.reset">Fetch!</button>
+        <button ng-click="app.resetFind()" class="blue" ng-if="app.reset">Reset</button>
+    </div>
     <section class="flex-container">
         <div class="loader" ng-if="app.loading"></div>
-        <div class="found-pet" ng-if="app.foundPets" ng-repeat="pet in app.foundPets">
-            <div class="thumbnail">
+        <div class="found-pet" ng-if="app.foundPets" ng-repeat="pet in app.foundPets | Paginate: app.offset| limitTo: 12">
+            <div class="thumbnail" ng-click="app.selectedPet = pet">
                 <img ng-src="{{pet.media[0]}}" alt="{{pet.name}}" >
             </div>
             <h4>{{pet.name}}</h4>
@@ -16,6 +33,24 @@
             </ul>
         </div>
     </section>
-
-    <a ui-sref="main">Home Page</a>
+    <div class="flex-container row centered"  ng-if="app.foundPets.length">
+        <button ng-disabled="app.offset < 12" ng-click="app.previousPets()">Prev</button>
+        <button ng-disabled="!app.additionalPets"ng-click="app.findPet()">Next</button>
+    </div>
+</section>
+<section class="display flex-container column centered" ng-class="{'hide': app.selectedPet == ''}">
+    <div class="close" ng-click="app.closeModal()">x</div>
+    <div class="selected-pet flex-container column centered" ng-if="app.selectedPet">
+            <div class="thumbnail">
+                <img ng-src="{{app.selectedPet.media[0]}}" alt="{{app.selectedPet.name}}" >
+            </div>
+            <h2>{{app.selectedPet.name}}</h2>
+            <ul>
+                <li>Animal : {{app.selectedPet.animal}} - Sex: {{app.selectedPet.sex}}</li>
+                <li>Breed : {{app.selectedPet.breed}}</li>
+                <li>Location : {{app.selectedPet.city}}</li>
+                <li>Contact : <a href="tel:{{app.selectedPet.phone}}">{{app.selectedPet.phone}}</a></li>
+            </ul>
+            <p>{{app.selectedPet.description}}</p>
+        </div>
 </section>

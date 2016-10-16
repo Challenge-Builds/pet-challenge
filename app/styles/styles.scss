@@ -1,15 +1,33 @@
 @import 'variables';
 @import 'pets';
 
+body {
+    margin: 0;
+    padding: 0;
+    background: $gray;
+    font-family: 'Lato', sans-serif;
+    color: $black;
+}
+
+nav {
+    height: 50px;
+    background: $white;
+    > * {
+    margin: 0 10px;
+    text-decoration: none;
+    color: $black;
+  }
+}
+
 .loader {
-  color: #5bffff;
+  color: $blue;
   font-size: 90px;
   text-indent: -9999em;
   overflow: hidden;
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  margin: 25% auto;
+  margin: 20% auto;
   position: relative;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);

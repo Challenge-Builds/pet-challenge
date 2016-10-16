@@ -1,17 +1,20 @@
 <section id="main">
-    <h1>{{app.welcome}}</h1>
-
-    <button ng-click="app.getRandomPet()">Feeling Lucky?</button>
-    <div class="random-pet" ng-if="app.randomPet">
-        <h4>{{app.randomPet.name}}</h4>
+    <header>
+        <h1>{{app.welcome}}</h1>
+    </header>
+    <section class="flex-container column centered">
+        <label>Do you know your pets Id?</label>
+        <input type="text" ng-model="app.petId" placeholder="Pet Id Here" ng-change="app.updateButton(app.petId)" ng-model-options="{debounce: 500}">
+        <button ng-click="app.mainButton()" class="green">{{app.mainButtonText}}</button>
+    </section>
+    <div class="random-pet flex-container column centered" ng-if="app.pet">
+        <h4>{{app.pet.name}}</h4>
         <ul>
-            <li>Animal: {{app.randomPet.animal}}</li>
-            <li>Breed: {{app.randomPet.breed}}</li>
+            <li>Animal: {{app.pet.animal}}</li>
+            <li>Breed: {{app.pet.breed}}</li>
         </ul>
         <div class="thumbnail">
-            <img ng-src="{{app.randomPet.media[2]}}" alt="{{app.randomPet.name}}" >
+            <img ng-src="{{app.pet.media[0]}}" alt="{{app.pet.name}}" >
         </div>
     </div>
-
-    <a ui-sref="find">Find A Pet</a>
 </section>
