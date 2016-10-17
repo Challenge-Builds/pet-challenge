@@ -3,26 +3,26 @@
 This is a Full Stack Javascript Application written with [**NodeJS**](https://nodejs.org/en/) for the Back End and [**AngularJS**](https://angularjs.org/) on the Front End. 
 
 ## How to Run the App:
-1. Clone the application 
+  * Clone the application
 ```
 git clone https://github.com/Challenge-Builds/pet-challenge.git && cd pet-challenge
 // or
 git clone git@github.com:Challenge-Builds/pet-challenge.git && cd pet-challenge
 ```
-2. Install dependencies
+  * Install dependencies
 ```
 npm install
 ```
-3. Run the Server
+  * Run the Server
 ```
 // In its own tab run:
 npm run server
 ```
-4. Start the App
+  * Start the App
 ```
 npm start
 ```
-5. Open you browser to [**http://localhost:8080**](http://localhost:8080)
+  * Open you browser to [**http://localhost:8080**](http://localhost:8080)
 
 ## Libraries and Tools Utilized:
   * [**HapiJS**](http://hapijs.com/) - A NodeJS framework for building applications and services
