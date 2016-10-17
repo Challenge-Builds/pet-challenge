@@ -4,24 +4,24 @@ This is a Full Stack Javascript Application written with [**NodeJS**](https://no
 
 ## How to Run the App:
 1. Clone the application 
-  ```
-  git clone https://github.com/Challenge-Builds/pet-challenge.git && cd pet-challenge
-  // or
-  git clone git@github.com:Challenge-Builds/pet-challenge.git && cd pet-challenge
-  ```
+```
+git clone https://github.com/Challenge-Builds/pet-challenge.git && cd pet-challenge
+// or
+git clone git@github.com:Challenge-Builds/pet-challenge.git && cd pet-challenge
+```
 2. Install dependencies
-  ```
-  npm install
-  ```
+```
+npm install
+```
 3. Run the Server
-  ```
-  // In its own tab run:
-  npm run server
-  ```
+```
+// In its own tab run:
+npm run server
+```
 4. Start the App
-  ```
-  npm start
-  ```
+```
+npm start
+```
 5. Open you browser to [**http://localhost:8080**](http://localhost:8080)
 
 ## Libraries and Tools Utilized:
