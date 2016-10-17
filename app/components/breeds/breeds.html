@@ -1,0 +1,16 @@
+<section id="breeds">
+    <header>
+        <h1>{{br.welcome}}</h1>
+    </header>
+    <div class="flex-container column centered">
+        <label>Please enter a type of Animal</label>
+        <input type="text" ng-model="br.animal" placeholder="ex. Dog, Cat...">
+        <button ng-click="br.findBreeds()" class="green">Search</button>
+    </div>
+    <section class="flex-container row">
+        <div class="loader" ng-if="br.loading"></div>
+        <ul class="found-breeds flex-container" ng-if="br.foundBreeds" >
+            <li ng-repeat="breed in br.foundBreeds">{{breed}}</li>
+        </ul>
+    </section>
+</section>

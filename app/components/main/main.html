@@ -1,0 +1,20 @@
+<section id="main">
+    <header>
+        <h1>{{app.welcome}}</h1>
+    </header>
+    <section class="flex-container column centered">
+        <label>Do you know your pets Id?</label>
+        <input type="text" ng-model="app.petId" placeholder="Pet Id Here" ng-change="app.updateButton(app.petId)" ng-model-options="{debounce: 500}">
+        <button ng-click="app.mainButton()" class="green">{{app.mainButtonText}}</button>
+    </section>
+    <div class="random-pet flex-container column centered" ng-if="app.pet">
+        <h4>{{app.pet.name}}</h4>
+        <ul>
+            <li>Animal: {{app.pet.animal}}</li>
+            <li>Breed: {{app.pet.breed}}</li>
+        </ul>
+        <div class="thumbnail">
+            <img ng-src="{{app.pet.media[0]}}" alt="{{app.pet.name}}" >
+        </div>
+    </div>
+</section>

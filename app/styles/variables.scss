@@ -1,0 +1,59 @@
+$medium-device: 1000px;
+$large-device: 1280px;
+$small-device: 768px;
+$extraSmall-device: 480px;
+$white: #efefef;
+$gray: #c2c2c2;
+$green:#6fc56f;
+$green-border: #67b567;
+$blue: #5454ef;
+$blue-border: #3636ec;
+$black: #353535;
+$modal: rgba(0,0,0,0.8);
+
+
+.container {
+    padding: 2% 0 0;
+    display: block;
+}
+.row {
+     flex-direction: row;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.start-center {
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.centered {
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+button {
+    padding: 0.5% 2%;
+    border-radius: 4px;
+    background: $white;
+    border: 1px solid $gray;
+    font-size: 14px;
+    &.green {
+        background: $green;
+        border: 1px solid $green-border;
+        color: $white;
+    }
+    &.blue {
+        background: $blue;
+        border: 1px solid $blue-border;
+        color: $white;
+    }
+}
+
+.hide {
+    display: none !important;
+}
