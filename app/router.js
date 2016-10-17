@@ -5,9 +5,9 @@ import BreedsTemplate from './components/breeds/breeds.html'
 
 /* @ngInject */
 function Router($stateProvider, $urlRouterProvider) {
-    // when trying to navigate to a non-existent route, go to login
+    // when trying to navigate to a non-existent route, go to home
     $urlRouterProvider.otherwise("/");
-    // when there is an empty route, redirect to /login
+    // when there is an empty route, redirect to home
     $urlRouterProvider.when('', '/');
 
     $stateProvider

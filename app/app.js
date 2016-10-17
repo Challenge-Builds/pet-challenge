@@ -7,10 +7,6 @@ import sweetalert from '../node_modules/sweetalert/dist/sweetalert.min'
 // Router
 import { Router } from './router';
 
-// Services
-// -- import Services Here --
-// import ExampleService from './services/exampleservice';
-
 // Directives
 import Navbar from './directives/navbar';
 
@@ -18,24 +14,26 @@ import Navbar from './directives/navbar';
 import MainCtrl from './components/main/main-ctrl';
 import BreedsCtrl from './components/breeds/breeds-ctrl';
 
-// Filters
-// -- import Filters Here --
-// import ExampleFilter from './filters/examplefilter';
-
 // Styles
-// -- Stylesheets can be imported as well, `.css`, `.sass`, `.scss`, etc. as long as you have the appropriate loader in the config --
 import './styles/styles.scss';
 import '../node_modules/sweetalert/dist/sweetalert.css'
 
 angular.module('starterApp', [uirouter])
     .config(Router)
-    // .service('ExampleService', ExampleService)
     .directive('navbar', () => new Navbar())
-    // .filter('exampleFilter', ExampleFilter)
     .controller('MainCtrl', MainCtrl)
     .controller('BreedsCtrl', BreedsCtrl)
-    .filter('Paginate', function() {
-        return function(input, start) {
+    .filter('Paginate', () => {
+        /**
+         * 
+         * This filter handles basic pagination rules for us.
+         * The offset will be used to determine the next and 
+         * previous button functionalities and whether or not 
+         * to request additional pets or to loop through our 
+         * existing content
+         * 
+         */  
+        return (input, start) => {
             start = +start;
             return input.slice(start);
         }

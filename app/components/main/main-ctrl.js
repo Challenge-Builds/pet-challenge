@@ -40,7 +40,7 @@ class MainCtrl {
         this.mainButtonText = 'Feeling Lucky?';
     }
 
-    // Build the find Query as well as handle the Next Pagination
+    // Build the find Query
     findPet() {
         if (!this.location) {
             return swal('Oops', 'Please enter a location', 'warning');
